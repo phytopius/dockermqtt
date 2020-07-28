@@ -1,0 +1,12 @@
+version: '3'
+services: 
+  broker:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+  sub:
+    build: .
+    depends_on:
+      - broker
+    volumes:
+      - .\logs:/usr/src/app/logs
